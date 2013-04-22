@@ -1,0 +1,29 @@
+﻿<?xml version="1.0"?>
+    <vogue caption="时尚精品分类" icon="img/cd.gif" explain="时尚精品分类">
+      <level0 id="26" parentTypeID="-1" caption="箱包" PRI="1" explain="时尚精品分类">
+        <level1 id="29" parentTypeID="26" caption="手袋" PRI="1" explain="时尚精品分类">
+			<level2 id="50" parentType="29" caption="第三层" />
+		</level1>
+        <level1 id="30" parentTypeID="26" caption="背包" PRI="2" explain="时尚精品分类"/>
+        <level1 id="31" parentTypeID="26" caption="银包" PRI="3" explain="时尚精品分类"/>
+        <level1 id="32" parentTypeID="26" caption="男包" PRI="4" explain="时尚精品分类"/>
+        <level1 id="33" parentTypeID="26" caption="电脑包" PRI="5" explain="时尚精品分类"/>
+        <level1 id="34" parentTypeID="26" caption="旅行包" PRI="6" explain="时尚精品分类"/>
+        <level1 id="35" parentTypeID="26" caption="拉杆箱" PRI="7" explain="时尚精品分类"/>
+        <level1 id="36" parentTypeID="26" caption="编织袋" PRI="8" explain="时尚精品分类"/>
+      </level0>
+      <level0 id="27" parentTypeID="-1" caption="鞋业" PRI="2" explain="时尚精品分类">
+        <level1 id="37" parentTypeID="27" caption="女鞋" PRI="1" explain="时尚精品分类"/>
+        <level1 id="38" parentTypeID="27" caption="男鞋" PRI="2" explain="时尚精品分类"/>
+        <level1 id="39" parentTypeID="27" caption="童鞋" PRI="3" explain="时尚精品分类"/>
+        <level1 id="40" parentTypeID="27" caption="运动鞋" PRI="4" explain="时尚精品分类"/>
+        <level1 id="41" parentTypeID="27" caption="休闲鞋" PRI="4" explain="时尚精品分类"/>
+      </level0>
+      <level0 id="28" parentTypeID="-1" caption="配饰" PRI="3" explain="">
+        <level1 id="42" parentTypeID="28" caption="皮带" PRI="1" explain="时尚精品分类"/>
+        <level1 id="43" parentTypeID="28" caption="手表" PRI="2" explain="时尚精品分类"/>
+        <level1 id="44" parentTypeID="28" caption="手机饰品" PRI="3" explain="时尚精品分类"/>
+        <level1 id="45" parentTypeID="28" caption="小挂件" PRI="4" explain="时尚精品分类"/>
+        <level1 id="46" parentTypeID="28" caption="其它饰品" PRI="5" explain="时尚精品分类"/>
+      </level0>
+    </vogue>

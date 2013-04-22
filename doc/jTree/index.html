@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="keywords" content="JS代码,菜单导航,JS广告代码,JS特效代码" />
+<meta name="description" content="此代码内容为JTree2.0 目录树，属于站长常用代码，更多菜单导航代码请访问懒人图库JS代码频道。" />
+<title>JTree2.0 目录树_懒人图库</title>
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<link href="css/JTree.css" rel="stylesheet" type="text/css" />
+<style>
+<!--
+.inputText{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	border: 1px solid #999999;
+}
+body {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	color: #666666;
+}
+-->
+</style>
+<script type="text/javascript" src="includes/JTree.js"></script>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="5" cellpadding="0">
+	<tr>
+		<td width="41%" valign="top"><div id="showTree"></div></td>
+		<td width="59%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="5">
+			<tr>
+				<td>分类名称：</td>
+				<td><input name="typeCaption" type="text" class="inputText" id="typeCaption" /></td>
+				<td>优先级：</td>
+				<td><input name="PRI" type="text" class="inputText" id="PRI" /></td>
+			</tr>
+			<tr>
+				<td>说明：</td>
+				<td><input name="explain" type="text" class="inputText" id="explain" /></td>
+				<td>父类：</td>
+				<td><input name="parentType" type="text" class="inputText" id="parentType" /></td>
+			</tr>
+			<tr>
+				<td>层次：</td>
+				<td><input name="level" type="text" class="inputText" id="level" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+			  <td colspan="4"><hr size="1" /></td>
+		  </tr>
+			<tr>
+			  <td>节点名称：</td>
+			  <td><label>
+			    <input name="nodeCaption" type="text" class="inputText" id="nodeCaption" value="第三层" />
+			  </label></td>
+			  <td>			    <input type="button" name="Submit" value="查找节点" onclick="findNode(myTree.treeNodes)" />			  </td>
+			  <td>&nbsp;</td>
+		  </tr>
+		</table></td>
+	</tr>
+</table>
+<p><br />
+&nbsp;</p></p>
+<p></p>
+<p>&nbsp;</p>
+</body>
+</html>
+<script language="javascript" type="text/javascript">
+<!--
+	function setValueById(pObjID,pValue){
+		var obj=document.getElementById(pObjID);
+		try{
+			obj.value=pValue;
+		}catch(e){
+			alert("控件："+pObjID+"　不存在，或没有value属性")
+		}
+	}
+	
+	function $(pID){
+		return document.getElementById(pID);
+	}
+	
+	function getNodeAtt(pNode,pAtt){
+		try{
+			return pNode.attributes.getNamedItem(pAtt).nodeValue;
+		}catch(e){
+			//alert("前台调试错误：\n"+e.message+"\n当前节点不存在: "+pAtt+"这个属性");
+		}
+	}
+	
+	var myTree=new JTree("showTree","vogueType.xml");
+	myTree.setPicPath("JTreePic/")
+	myTree.onclick=function(){
+		//alert(myTree.selectNode.parentNode.attributes.getNamedItem("explain").nodeValue);
+		//alert(myTree.clickItem.level)
+		//alert(myTree.clickItem.treeNodes.length);
+		//try{myTree.clickItem.treeNodes[0].click();}catch(e){}
+		setValueById("typeCaption",vControl('REPLACE',getNodeAtt(myTree.selectNode,"caption")));
+		setValueById("parentType",vControl('REPLACE',getNodeAtt(myTree.selectNode.parentNode,"caption")));
+		setValueById("PRI",getNodeAtt(myTree.selectNode,"PRI"));
+		setValueById("explain",getNodeAtt(myTree.selectNode,"explain"));
+		setValueById("level",myTree.clickItem.level);
+	}
+	myTree.CAPTIONATT="caption";
+	myTree.create();
+	//alert(myTree.root.caption);
+	myTree.root.treeNodes[0].treeNodes[1].click();
+	myTree.treeNodes[0].treeNodes[1].expand(false);
+	myTree.treeNodes[0].treeNodes[2].expand(false);
+	
+function vControl(pChoice,pParm){
+	switch(pChoice){
+		case "REPLACE":
+			var pattern=/\([0-9]+\)$/;
+				return pParm.replace(pattern,"");
+			break;
+		case "FINDNODE":
+			var obj;
+			for(var i=0;obj=pParm[i];i++){
+				alert(obj.caption);
+				if(obj.caption==$("nodeCaption").value)
+					obj.click();
+			}
+			break;
+	}
+}
+
+function findNode(pTree){
+	var obj;
+	for(var i=0;obj=pTree[i];i++){
+		if(obj.caption==$("nodeCaption").value){
+			obj.click();
+			//obj.parentTreeNode.expand(true)
+			myTree.clickItem.parentTreeNode.expand(true);
+			return true;
+		}
+		findNode(obj.treeNodes)
+	}
+}
+
+-->
+</script>

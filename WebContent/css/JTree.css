@@ -1,0 +1,17 @@
+﻿.outLine{
+	font-size: 12px;
+}
+.caption{
+	cursor:default;
+}
+.captionActive{
+	color: #000000;
+	background-color: #FFFFCC;	
+	cursor:default;
+	
+}
+.captionHighLight{
+	color: #FFFFFF;
+	background-color: #003366;
+	cursor:default;
+}

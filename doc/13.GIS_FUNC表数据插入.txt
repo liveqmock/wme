@@ -1,0 +1,4 @@
+
+
+insert into gis_func(code, parentcode, funcname, class, comm) values('10',null,'数据平台','1','');
+insert into gis_func(code, parentcode, funcname, class, comm) values('1001','10','数据平台管理','2','');

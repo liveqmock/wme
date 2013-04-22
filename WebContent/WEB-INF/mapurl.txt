@@ -1,0 +1,7 @@
+﻿title:"画布地图",wkid:"102100",url : "http://www.arcgisonline.cn/ArcGIS/rest/services/ChinaOnlineStreetGray/MapServer",thumbnailUrl : "images/ChinaOnlineStreetGray.jpg"
+title:"地形图",wkid:"102100",url : "http://www.arcgisonline.cn/ArcGIS/rest/services/ChinaOnlineCommunity/MapServer",thumbnailUrl : "images/ChinaOnlineCommunity.jpg"
+title:"影像图",wkid:"102100",url : "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",thumbnailUrl : "images/World_Imagery.jpg"
+title:"世界海洋",wkid:"102100",url : "http://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer",thumbnailUrl : "images/tempbing_oceans_manchester.png"
+title:"国家地理",wkid:"102100",url : "http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer",thumbnailUrl : "images/NatGeo_World_Map.jpg"
+title:"OSM地图",wkid:"102100",type:"OpenStreetMap",thumbnailUrl:"images/tempbing_osm_manchester.png"
+title:"湖南地图",wkid:"4326",url:"http://192.168.0.178:8399/arcgis/rest/services/Basemap_img_hunan/MapServer",thumbnailUrl:"images/tempbing_dien_hunan.png"

@@ -1,0 +1,120 @@
+body {
+	color: rgb(51, 51, 51); font-family: Arial, Helvetica, sans-serif; font-size: 12px; margin-top: 0px;
+}
+a:link {
+	color: rgb(88, 97, 136); font-size: 14px; font-weight: bold; text-decoration: none;
+}
+a:visited {
+	color: rgb(88, 97, 136); font-weight: bold; text-decoration: none;
+}
+a:hover {
+	color: rgb(255, 156, 0); font-weight: bold; text-decoration: underline;
+}
+a:active {
+	color: rgb(88, 97, 136); font-weight: bold; text-decoration: none;
+}
+a.red:link {
+	color: rgb(255, 156, 0); font-size: 14px; font-weight: bold; text-decoration: none;
+}
+a.red:visited {
+	color: rgb(255, 156, 0); font-size: 14px; font-weight: bold; text-decoration: none;
+}
+a.red:hover {
+	color: rgb(255, 156, 0); font-size: 14px; font-weight: bold; text-decoration: underline;
+}
+a.red:active {
+	color: rgb(255, 156, 0); font-size: 14px; font-weight: bold; text-decoration: none;
+}
+a.red1:link {
+	color: rgb(0, 46, 115); font-size: 12px; font-weight: normal; text-decoration: none;
+}
+a.red1:visited {
+	color: rgb(0, 46, 115); font-size: 12px; font-weight: normal; text-decoration: none;
+}
+a.red1:hover {
+	color: rgb(0, 46, 115); font-size: 12px; font-weight: normal; text-decoration: underline;
+}
+a.red1:active {
+	color: rgb(0, 46, 115); font-size: 12px; font-weight: normal; text-decoration: none;
+}
+a.red2:link {
+	color: rgb(139, 0, 0); line-height: 160%; font-size: 12px; text-decoration: none;
+}
+a.red2:visited {
+	color: rgb(139, 0, 0); line-height: 160%; font-size: 12px; text-decoration: none;
+}
+a.red2:hover {
+	color: rgb(139, 0, 0); line-height: 160%; font-size: 12px; text-decoration: underline;
+}
+a.red2:active {
+	color: rgb(139, 0, 0); line-height: 160%; font-size: 12px; text-decoration: none;
+}
+a.red3:link {
+	color: rgb(255, 235, 205); font-size: 14px; text-decoration: none;
+}
+a.red3:visited {
+	color: rgb(255, 235, 205); font-size: 14px; text-decoration: none;
+}
+a.red3:hover {
+	color: rgb(255, 235, 205); font-size: 14px; text-decoration: underline;
+}
+a.red3:active {
+	color: rgb(255, 235, 205); font-size: 14px; text-decoration: none;
+}
+a.dl:link {
+	color: rgb(255, 235, 205); font-size: 12px; text-decoration: none;
+}
+a.dl:visited {
+	color: rgb(255, 235, 205); font-size: 12px; text-decoration: none;
+}
+a.dl:hover {
+	color: rgb(255, 255, 255); font-size: 12px; text-decoration: none;
+}
+a.dl:active {
+	color: rgb(255, 235, 205); font-size: 12px; text-decoration: none;
+}
+a.bai:link {
+	color: rgb(46, 105, 168); font-size: 12px; text-decoration: none;
+}
+a.bai:visited {
+	color: rgb(46, 105, 168); font-size: 12px; text-decoration: none;
+}
+a.bai:hover {
+	font-size: 12px; font-weight: bold; text-decoration: underline;
+}
+a.bai:active {
+	font-size: 12px; font-weight: bold; text-decoration: none;
+}
+ul {
+	list-style: none; margin: 0px; padding: 0px;
+}
+ul li {
+	line-height: 160%;
+}
+.tab1bar {
+	border: 1px solid rgb(185, 206, 228); background-color: rgb(238, 246, 253);
+}
+.tab2bar {
+	border-style: none solid solid; border-right-color: rgb(203, 219, 237); border-bottom-color: rgb(203, 219, 237); border-left-color: rgb(203, 219, 237); border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; background-color: rgb(239, 246, 250);
+}
+.d_font {
+	color: rgb(255, 51, 0); line-height: 21px; font-size: 14px; font-weight: bold; border-right-color: rgb(203, 219, 237); border-bottom-color: rgb(203, 219, 237); border-left-color: rgb(203, 219, 237); border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-right-style: solid; border-bottom-style: solid; border-left-style: solid;
+}
+.d_font1 {
+	text-align: justify; color: rgb(76, 76, 76); line-height: 18pt; font-size: 14px;
+}
+.d_font2 {
+	color: rgb(203, 226, 244); font-size: 12px; font-weight: normal;
+}
+.d_font3 {
+	text-align: justify; color: rgb(67, 75, 81); line-height: normal; font-size: 12px;
+}
+.d_font4 {
+	text-align: justify; color: rgb(233, 245, 255); line-height: normal; font-size: 12px;
+}
+#main {
+	height: 285px; line-height: 160%; overflow: auto; padding-left: 10px; overflow-y: auto; scrollbar-face-color: rgb(255, 255, 255); scrollbar-3dlight-color: rgb(255, 255, 255); scrollbar-shadow-color: rgb(145, 145, 146); scrollbar-highlight-color: rgb(255, 255, 255); scrollbar-darkshadow-color: rgb(255, 255, 255); scrollbar-arrow-color: rgb(145, 145, 146); scrollbar-track-color: rgb(255, 255, 255);
+}
+.main {
+	height: 285px; line-height: 160%; overflow: auto; padding-left: 10px; overflow-y: auto; scrollbar-face-color: rgb(255, 255, 255); scrollbar-3dlight-color: rgb(255, 255, 255); scrollbar-shadow-color: rgb(145, 145, 146); scrollbar-highlight-color: rgb(255, 255, 255); scrollbar-darkshadow-color: rgb(255, 255, 255); scrollbar-arrow-color: rgb(145, 145, 146); scrollbar-track-color: rgb(255, 255, 255);
+}

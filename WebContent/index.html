@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<META content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<TITLE>运输公司GIS公共服务平台●数据平台</TITLE>
+<STYLE type="text/css">
+body {
+	background-color: #e6f4ff;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</STYLE>
+<SCRIPT language="JavaScript">
+	function myLogin() {
+		loadXMLDoc()
+		//document.loginForm.submit();
+	}
+	function myReset() {
+		document.loginForm.reset();
+	}
+	function loadXMLDoc() {
+		var xmlhttp;
+		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else {// code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				if (xmlhttp.responseText == "200") {
+					window.location.href = "editv2.jsp";
+				} else if (xmlhttp.responseText == "01") {
+					alert("用户名或者密码不能为空!")
+					changeImg();
+				} else if (xmlhttp.responseText == "02") {
+					alert("用户名或者密码错误!")
+					changeImg();
+				} else if (xmlhttp.responseText == "03") {
+					alert("验证码不能为空!")
+					changeImg();
+				} else if (xmlhttp.responseText == "04") {
+					alert("验证码错误!")
+					changeImg();
+				}else{
+					window.location.href = "editv2.jsp";
+				}
+			}
+		}
+		var username = document.getElementById("username").value;
+		var password = document.getElementById("password").value;
+		var verificationCode = document.getElementById("verificationCode").value;
+		xmlhttp.open("POST", "login.so", true);
+		xmlhttp.setRequestHeader("Content-type",
+				"application/x-www-form-urlencoded");
+		xmlhttp.send("username=" + username + "&password=" + password
+				+ "&verificationCode=" + verificationCode);
+	}
+	//刷新验证码
+	function changeImg() {
+		 document.getElementById("imgObj").src=chgUrl(document.getElementById("imgObj").src)
+	}
+	//时间戳 
+	//为了使每次生成图片不一致，即不让浏览器读缓存，所以需要加上时间戳 
+	function chgUrl(url) {
+		var timestamp = (new Date()).valueOf();
+		urlurl = url.substring(0, 17);
+		if ((url.indexOf("?") >= 0)) {
+			urlurl = url + "&t=" + timestamp;
+		} else {
+			urlurl = url + "?t=" + timestamp;
+		}
+		return urlurl;
+	}
+	document.onkeydown=function(e){
+		var keynum;
+		if(window.event){// IE
+			keynum = window.event.keyCode;
+		}else if(e.which){ // Netscape/Firefox/Opera
+			keynum = e.which;
+		}
+		if (keynum == '13') {
+			myLogin();
+		}
+	}
+</SCRIPT>
+<LINK rel="stylesheet" type="text/css" href="css/css.css">
+
+<META name="GENERATOR" content="MSHTML 9.00.8112.16455">
+</HEAD>
+<BODY>
+
+	<FORM method="post" name="loginForm">
+		<INPUT name="portalType" value="0" type="hidden">
+		<TABLE border="0" cellSpacing="0" cellPadding="0" width="100%"
+			background="images/login_bg.jpg" align="center">
+			<TBODY>
+				<TR>
+					<TD vAlign="bottom" width="15%" align="right">&nbsp;</TD>
+					<TD vAlign="top" width="70%">
+						<TABLE border="0" cellSpacing="0" cellPadding="0" width="1002"
+							align="center">
+							<TBODY>
+								<TR>
+									<TD colSpan="2"><IMG src="images/login_01.jpg"
+										width="1002" height="409"></TD>
+								</TR>
+								<TR>
+									<TD><IMG src="images/login_02.jpg" width="295" height="42"></TD>
+									<TD>
+										<TABLE border="0" cellSpacing="0" cellPadding="0" width="707">
+											<TBODY>
+												<TR>
+													<TD height="33" width="13"><IMG
+														src="images/login_09.jpg" width="13" height="42"></TD>
+													<TD class="d_font3" width="58">用户名：</TD>
+													<TD width="105"><LABEL><INPUT id="username"
+															name="username" size="13" type="text"></LABEL></TD>
+													<TD width="7" align="center"></TD>
+													<TD class="d_font3" width="57" align="center">密&nbsp;&nbsp;&nbsp;码：</TD>
+													<TD width="105"><LABEL><INPUT id="password"
+															name="password" size="13" type="password"></LABEL></TD>
+													<TD width="8" align="center"></TD>
+													<TD width="61" align="center"><SPAN class="d_font3">校验码：</SPAN></TD>
+													<TD width="56"><LABEL><INPUT
+															id="verificationCode" name="verificationCode" size="8"
+															type="text"></LABEL></TD>
+													<TD width="10">&nbsp;</TD>
+													<td width="68" align="center"><a href=#
+														onclick="changeImg()"> <img id="imgObj"
+															alt="看不清 ，请点击图片换一张" src="imageVerificationCode.so" border="0" /></a></td>
+													<TD width="10" align="center"></TD>
+													<TD width="63" align="center"><IMG border="0"
+														src="images/menu1.jpg" width="63" height="26"
+														useMap="#Map"></TD>
+													<TD width="12" align="center"></TD>
+													<TD width="74"><IMG border="0" src="images/menu2.jpg"
+														width="63" height="26" useMap="#Map2"></TD>
+												</TR>
+											</TBODY>
+										</TABLE>
+									</TD>
+								</TR>
+								<TR>
+									<TD></TD>
+									<TD>&nbsp;</TD>
+								</TR>
+							</TBODY>
+						</TABLE>
+					</TD>
+					<TD vAlign="bottom" width="15%" align="left">&nbsp;</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+	</FORM>
+	<MAP id="Map" name="Map">
+		<AREA href="javascript:myLogin();" shape="rect" coords="2,1,62,25">
+	</MAP>
+	<MAP id="Map2" name="Map2">
+		<AREA href="javascript:myReset();" shape="rect" coords="1,2,63,26">
+	</MAP>
+</BODY>
+</HTML>

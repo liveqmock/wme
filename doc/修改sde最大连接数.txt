@@ -1,0 +1,58 @@
+1、查看sde参数配置
+
+sdemon -o info -I config
+
+sde默认参数及说明的文件存放位置（只是查看用）
+
+sde_home\etc\giomgr.defs
+
+2、从oracle中将sde配置参数导出到本地文件中：
+
+sdeconfig -o export -f filename -s ip -i 5151 -u sde -p sde
+
+3、打开导入至本地的配置文件，修改connections参数，直接修改数字为新的连接数
+
+4、将修改后的配置参数文件重新导入oracle：
+
+sdeconfig -o import -f filename -s ip -i 5151 -u sde -p sde
+
+5、查看修改后的sde参数
+
+
+
+
+
+多用户的实施过程中。 
+有时会出现图形库莫名的连接不上， 如果用ARCMAP或ARCCATALOG连接的时候还会提示错误信息 “Failed to connect to database. Maximum number of conections to instance exceeded”。 
+错误提示非常清晰， 可是怎么解决呢? 很多时候的解决办法都是重启SDE服务或删除SDE服务所在机器上的GSRVR.EXE进程。 
+这虽然可以解决当前的问题， 但过一段时间后又会出现同样的状况， 不胜其扰。
+SDE本身默认设置的最大连接数为48个。一般来说不可能同时有这么多用户一起连接图形数据库。
+ 并且我们的系统以及ARCMAP或ARCCATALOG等桌面软件在退出的时候也会删除与数据库的连接。 
+ 但为什么还会出现超出最大连接数的问题呢？在经过多次的尝试之后发现：当系统异常退出，或连接上图形数据库时强行拔除网线等非常规操作时。
+ SDE服务器上的连接进程以及数据库中记录的SDE的用户连接数等记录无法删除。导致无效的连接越来越多， 最终达到了他的极限， 出现错误在所难免。
+我们可以通过敲入如下命令查看当前SDE的一些基本设置参数：
+
+sdemon –o info –I config 
+
+也可以通过命令查看当前用户连接数：
+
+sdemon –o info –I users （在sdemon命令后加上 ？就可以查看该命令的所有参数信息）。
+
+ 在为用户设置最大连接数的时候， 需要预估一下在同一时间最多可能会有多少个连接进程。 
+ 在SDE中开启的进程数和连接用户数是随着实例计算的， 如一台机器打开N个ARCMAP并连上数据库后， 就有N个连接进程和N个连接用户的记录。
+如果确认好最大连接数后就可以进行设置了。
+方法一：用PLSQL或TOAD打开SDE用户下的表SEVER_CONFIG，编辑字段CONNECTIONS值为你的最大连接数。设置字段TCPKEEPALIVE值为TRUE。
+方法二：打开SDE的安装目录下的（一般安装路径为C:\arcgis\ArcSDE\sqlexe\etc）giomgr.defs文件进行编辑，设置CONNECTIONS参数为你的最大连接数。
+然后设置TCPKEEPALIVE参数为TRUE。 通过命令导入到数据库中：
+sdeconfig –o import –f C:\arcgis\ArcSDE\sqlexe\etc\giomgr.defs –i esri_sde(数据库实例名) –s (ServerName) –u sde(用户名) –p sde(密码) 。 
+设置好后需要重启SDE服务才能生效。
+TCPKEEPALIVE参数是做什么用的呢？能够删除无效连接的最大功臣就是他了。
+当TCPKEEPALIVE参数设置为TRUE后，数据库会根据SDE服务所在机器的注册表项KEEPALIVETIME所提供的响应时间， 不断侦测所有连接是否为无效连接，如果为无效连接，则自动删除该连接。
+ 对默认安装操作系统的机器而言KEEPALIVETIME注册表项是没有的。
+  如果没有话，服务器不会主动发送 KeepAlive 数据包来确认空闲连接是否依然毫无变化。
+  也就不会进行删除操作。 所以上面提到的无效连接会越来越多。
+  可以在如下路径中：Local_Machine\system\CurrentControlSet\Services\Tcpip\Parameters 添加DWORD项：KeepAliveTime。
+   如果不设置值的话默认为两小时。具体时间可以看情况而定。一般推荐为5分钟。
+   然后重启机器（一定要重启，注册表的新加项才生效）。
+   世界从此清静了， 以后超出最大连接数的错误再也不会烦扰你的头皮。
+体验新版博客

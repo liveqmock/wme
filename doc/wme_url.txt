@@ -1,0 +1,113 @@
+﻿1 图层列表
+http://192.168.0.178:8080/wme/operatMap.do?oper=layers
+方式：get
+参数：
+oper=layers
+响应：{"ret":true,"msg":"成功","layers":[{"tablename":"TESTPOLYGON","layername":"测试面","type":"polygon","date":"2012-12-18 09:29:19"},{"tablename":"SHIYOUCHUCUNQU","layername":"石油储存区","type":"polygon","date":"2012-12-24 16:32:41"},{"tablename":"SHIYOUKAICAIQU","layername":"石油开采区","type":"polygon","date":"2012-12-24 16:33:08"},{"tablename":"RANQIGUANDAO","layername":"燃气管道","type":"line","date":"2012-12-24 16:40:54"},{"tablename":"BEIJINGYINXING","layername":"北京银行","type":"point","date":"2012-12-28 10:13:10"},{"tablename":"JIANSHEYINXING","layername":"建设银行","type":"point","date":"2012-12-28 11:18:52"},{"tablename":"ZHONGSHIYOUYOUTIANPO","layername":"中石油油田POI","type":"point","date":"2013-01-05 10:38:44"},{"tablename":"YOUTIAN","layername":"油田","type":"point","date":"2013-01-05 10:42:08"},{"tablename":"GUANXIAN","layername":"管线","type":"point","date":"2013-01-14 10:43:01"},{"tablename":"FENGJINGQU","layername":"风景区","type":"polygon","date":"2013-01-15 10:08:55"},{"tablename":"BEIJINGGASSTA","layername":"北京加油站POI","type":"point","date":"2013-01-15 16:03:20"},{"tablename":"TEST","layername":"TEST","type":"line","date":"2013-01-18 16:24:12"},{"tablename":"TEST1","layername":"TEST1","type":"point","date":"2013-01-18 16:24:22"},{"tablename":"TEST2","layername":"TEST2","type":"polygon","date":"2013-01-18 16:24:31"}]}
+
+
+
+2 创建图层
+http://192.168.0.178:8080/wme/operatMap.do 
+方式： post
+参数：
+layer={"layername":"NEWLAYER","wkid":4326,"shapetype":"4","fields":[{"id":0,"name":"名称","type":5},{"id":1,"name":"地址","type":5},{"id":2,"name":"电话","type":5},{"id":3,"name":"备注","type":5}]}
+oper=addlayer
+
+shapetype类型
+2点
+4线
+16面
+
+
+响应：
+{"ret":true,"msg":"成功","layer":{"tablename":"NEWLAYER","layername":"NEWLAYER","type":"line","date":"2013-01-24 13:06:37"}}
+
+
+3 图层结构
+http://192.168.0.178:8080/wme/operatMap.do
+方式： post
+
+参数：
+图层名称  layer=BEIJINGYINXING
+操作      oper=quecolumndef
+
+响应：
+{"ret":true,"msg":"成功","features":{"type":"esriGeometryPoint","columndef":[{"SCALE":0,"NAME":"NAME","LENGTH":255,"TYPE":"esriFieldTypeString","ALIAS":"名称"},{"SCALE":0,"NAME":"ADRESS","LENGTH":255,"TYPE":"esriFieldTypeString","ALIAS":"ADRESS"},{"SCALE":0,"NAME":"TELA","LENGTH":255,"TYPE":"esriFieldTypeString","ALIAS":"TELA"},{"SCALE":0,"NAME":"AAA","LENGTH":255,"TYPE":"esriFieldTypeString","ALIAS":"AAA"},{"SCALE":0,"NAME":"你","LENGTH":255,"TYPE":"esriFieldTypeString","ALIAS":"你"},{"SCALE":0,"NAME":"USERID","LENGTH":9,"TYPE":"esriFieldTypeInteger","ALIAS":"USERID"},{"SCALE":0,"NAME":"SYMBOL","LENGTH":255,"TYPE":"esriFieldTypeString","ALIAS":"SYMBOL"},{"SCALE":0,"NAME":"SHAPE","LENGTH":0,"TYPE":"esriFieldTypeString","ALIAS":"SHAPE"},{"SCALE":0,"NAME":"OBJECTID","LENGTH":10,"TYPE":"esriFieldTypeInteger","ALIAS":"OBJECTID"}]}}
+
+4 得到图层数据
+
+http://192.168.0.178:8080/wme/operatMap.do?oper=queallpage&layer=DIEN&wkid=102100
+方式： get
+
+参数：
+操作     oper=queallpage
+图层名称 layer=DIEN
+投影     wkid=102100
+
+响应：
+[{"NAME":"二","DESCRIPTION":"的风格","SYMBOL":"0x9500","SHAPE":{"x":1.295202397815004E7,"y":4864793.467476957,"spatialReference":"wkid:102100"},"OBJECTID":1,"USERID":21},{"NAME":"去","DESCRIPTION":"啊","SYMBOL":"0x9080","SHAPE":{"x":1.2956303990175784E7,"y":4880387.0148715675,"spatialReference":"wkid:102100"},"OBJECTID":2,"USERID":21}]
+
+
+5 http://192.168.0.178:8080/wme/operatMap.do?oper=search&layer=GUANXIAN&word=%E5%8C%97%E5%A4%A7&wkid=102100
+
+方式： get
+
+参数：
+操作     oper=search&
+图层名称 layer=GUANXIAN&
+word=%E5%8C%97%E5%A4%A7&
+
+投影     wkid=102100
+
+响应：
+[{"NAME":"北大线","SYMBOL":"0xline3","SHAPE":{"paths":[[[1.2955692957581215E7,4832843.031803498],[1.295110603794835E7,4814651.032284952],[1.2949882970435552E7,4795083.004076421],[1.2963336042510578E7,4790190.942059318],[1.3023569015060699E7,4800281.045617814]]],"spatialReference":"wkid:102100"},"OBJECTID":1,"USERID":21}]
+
+
+6 删除要素
+
+http://192.168.0.178:8080/wme/operatMap.do
+
+方式： post
+
+参数：
+操作 oper=del
+ID   id=321  //就是OBJECTID
+图层名称 layer=SDFSD
+
+响应：
+{"ret":true,"msg":"成功","id":"321"}
+
+7 删除图层
+http://192.168.0.178:8080/wme/operatMap.do?oper=dellayer&layer=SDFSD
+
+方式： post
+
+参数：
+
+图层名称 layer	SDFSD
+操作 oper	dellayer
+
+响应：{"ret":true,"msg":"成功"}
+
+8下载图层
+
+http://192.168.0.178:8080/wme/downShp.do?tablename=ADCS
+
+表名称：tablename=ADCS
+
+
+8校验叠加图url
+http://192.168.0.178:8080/wme/free.so?url="http://www.hao123.com/"
+
+方式： post
+
+参数：
+oper=checkurl
+url="http://www.hao123.com/" 校验地址
+
+响应：
+	成功：
+	{"ret":true}
+		失败：
+	{"ret":true}

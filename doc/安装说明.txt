@@ -1,0 +1,48 @@
+安装ArcSDE_Windows_101_129054.iso，tomcat 6，目前sde安装的是window版本
+
+在linux系统下
+oracle
+arcgis sde for oracle
+
+在window下
+oracle
+arcgis sde for oracle
+
+
+1 需要安装arc sde并获取连接信息
+2 web.xml 配置信息
+	<servlet>
+		<description></description>
+		<display-name>ManagerDataServlet</display-name>
+		<servlet-name>ManagerDataServlet</servlet-name>
+		<servlet-class>com.dien.manager.servlet.ManagerDataServlet</servlet-class>
+		<init-param>
+			<!--sde ip -->
+			<param-name>server</param-name>
+			<param-value>192.168.0.113</param-value>
+		</init-param>
+		<init-param>
+			<!--sde端口 -->
+			<param-name>instance</param-name>
+			<param-value>5151</param-value>
+		</init-param>
+		<init-param>
+			<!--sde数据库 -->
+			<param-name>database</param-name>
+			<param-value>sde</param-value>
+		</init-param>
+		<init-param>
+			<!--sde用户名称 -->
+			<param-name>user</param-name>
+			<param-value>sde</param-value>
+		</init-param>
+		<init-param>
+			<!--sde用户密码 -->
+			<param-name>password</param-name>
+			<param-value>dien</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+3 将WebMapEdit.war放到"tomcat安装目录下\webapps"目录下
+4 重启下tomcat
